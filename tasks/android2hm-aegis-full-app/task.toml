@@ -32,8 +32,9 @@ timeout_sec = 14400
 environment_mode = "shared"
 
 [verifier.env]
-# 模拟器的 hdc 连接地址（容器内视角）。Docker Desktop 下宿主机模拟器为 host.docker.internal:<端口>
-EFFLORA_HDC_DEVICE = "${EFFLORA_HDC_DEVICE:-host.docker.internal:5555}"
+# 模拟器接入见 docs/emulator-ui-tests.md：运行前在宿主机设置 EFFLORA_DEVICE_SN（必填）和 EFFLORA_HDC_SERVER（可选）
+HDC_SERVER = "${EFFLORA_HDC_SERVER:-host.docker.internal:8710}"
+DEVICE_SN = "${EFFLORA_DEVICE_SN}"
 
 [agent]
 # Our reference agent runs of this whole-app migration took 4-6 hours of wall-clock time; 8 hours leaves

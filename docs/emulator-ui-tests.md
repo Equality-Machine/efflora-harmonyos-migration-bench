@@ -1,42 +1,75 @@
 # 模拟器 UI 测试
 
-需要验证界面与交互还原度的任务用 Hypium UI 测试验证：构建在任务容器内完成，UI 测试运行在宿主机的 HarmonyOS 模拟器上。
+部分任务（`task.toml` 里 `requires_emulator = true`）要在模拟器上跑 UI 测试来打分。模拟器开在你自己的电脑（宿主机）上，评分时容器会通过宿主机的 hdc 连过去。你只需要：准备好一台模拟器，然后告诉 Harbor 用哪一台。
 
-## 工作方式
+## 1. 准备模拟器
 
-`tests/test.sh` 依次执行：
+要求：机型 **Pura 90 Pro**，系统 **HarmonyOS 6.1.1(24)**。
 
-1. 导出 `model.patch`，把 `tests/ohosTest` 还原到 `entry/src/ohosTest`。
-2. 在容器内构建应用 HAP 和测试 HAP。任一失败时奖励为 0。
-3. 在容器内启动 hdc server，用 `hdc tconn` 直连模拟器的调试端口。
-4. 对 `tests/fpoints.json` 里的每个 F-point：卸载 → 把两个 HAP 放进设备同一目录后 `bm install -p` → 按顺序运行各测试阶段，阶段之间 `aa force-stop` 模拟重启。所有阶段通过，该 F-point 才算通过。
-5. 写入 `/logs/verifier/reward.json`：
+**macOS**：用 DevEco Studio 的设备管理器创建并启动即可。
 
-   ```json
-   {"reward": 0.75, "build": 1, "task_complete": 0, "F1": 1, "F2": 1, "F3": 1, "F4": 0}
-   ```
+**Linux**：需要 Ubuntu 18.04 以上、x86_64、支持 KVM，用 Command Line Tools **26.0.0 以上**自带的 Emulator（[华为文档](https://developer.huawei.com/consumer/cn/doc/doccenter-deveco-studio/ide-commandline-emulator)）：
 
-   `reward` 是通过的 F-point 占比；`task_complete` 为 1 表示全部通过。
+```bash
+# 装依赖；当前用户要能读写 /dev/kvm 和 /dev/dri（加入 kvm、video、render 组）
+sudo apt install -y libatomic1 libpulse0 libegl1 libgbm1 libgl1 libgl1-mesa-dri libpng16-16 libfontconfig1 \
+  libfreetype6 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-shape0 \
+  libxcb-xinerama0 libxcb-xkb1 libsm6 libice6 libxkbcommon-x11-0 libxkbcommon0 libglib2.0-0
+export PATH=<command-line-tools>/emulator:<command-line-tools>/sdk/default/openharmony/toolchains:$PATH
 
-容器必须自己起 hdc server，不能连宿主机的 server：hdc 的文件传输由 server 读取本地文件，宿主机的 server 看不到容器里的 HAP。
+# 先让 hdc 对外监听，不然容器连不上
+hdc kill; nohup hdc -m -s 0.0.0.0:8710 >/dev/null 2>&1 &
 
-## 宿主机准备
+# 下载镜像、创建并启动模拟器（名字里不能有 -）
+Emulator -license accept
+Emulator -install -deviceType phone -osVersion "HarmonyOS 6.1.1(24)"
+Emulator -create Pura90Pro -deviceType Phone -osVersion "HarmonyOS 6.1.1(24)" -screenProfile "Pura 90 Pro" \
+  -instancePath ~/hemu/instances -imageRoot ~/hemu/sdk
+mkdir -p -m 700 /tmp/hemu-xdg
+QT_QPA_PLATFORM=offscreen XDG_RUNTIME_DIR=/tmp/hemu-xdg nohup Emulator -start Pura90Pro \
+  -instancePath ~/hemu/instances -imageRoot ~/hemu/sdk -noWindow >/dev/null 2>&1 &
+```
 
-- Harbor CLI **0.24.0**（`uv tool install harbor==0.24.0`），任务 `task.toml` 使用 `schema_version = "1.4"`。
-- 安装 DevEco Studio，创建并启动一台手机模拟器，**统一环境**为：HarmonyOS 6.1.1(24)、API 24、设备型号 Pura 90 Pro、分辨率 1256 × 2760、语言 zh-Hans-CN、时区 Asia/Shanghai。测试在这套环境下验证，换其他设备或分辨率可能失效。
-- **新建的模拟器先手动完成一次输入法的首次使用**：点任意输入框调出键盘，同意系统输入法的使用协议。否则协议弹窗会遮住应用界面，所有 F-point 都会失败。
-- 确认模拟器的 hdc 连接地址：在宿主机执行 `hdc list targets`，通常是 `127.0.0.1:5555`。
-- 运行前设置模拟器在**容器内**的地址：
+8710 端口对局域网开放了，记得用防火墙限制。
 
-  ```bash
-  export EFFLORA_HDC_DEVICE=host.docker.internal:5555   # Docker Desktop（macOS / Windows）的默认值
-  harbor run -p tasks -i 'ios2hm-*' -a <agent> -m <provider/model>
-  ```
+## 2. 第一次开机后设置一下
 
-  Linux 上 Docker 没有 `host.docker.internal`，改用宿主机在 docker 网桥上的地址（如 `172.17.0.1:5555`），并确认模拟器端口对该网段可达。
+每台模拟器只需要做一次：
 
-## 并发与稳定性
+1. 语言改成**简体中文（中国）**：设置 > 系统 > 语言和地区。如果是英文界面，先 Add language 加上简体中文，再把地区改成中国。
+2. 时区是上海（默认就是）。
+3. 随便点一个输入框，**同意小艺输入法的协议**。不同意的话弹窗会挡住应用，所有测试都会失败。
 
-- 同一台模拟器上的多个 trial 通过设备上的锁目录 `/data/local/tmp/efflora_bench.lock` 依次执行。超过 1 小时未释放的锁视为残留并清除。需要更高并发时，可以启动多台模拟器，用不同的 `EFFLORA_HDC_DEVICE` 分批运行。
-- 遇到已知的模拟器环境错误（如 `Can not connect to AAMS, RET_ERR_CONNECTION_EXIST`）时，该 F-point 自动重试一次。仍失败、或无法连接设备时，`test.sh` 不写奖励文件并以非 0 退出，Harbor 会记为验证异常，不计入 0 分。
-- 设备不可用、HAP 安装出现环境错误等情况都不应算作 Agent 失败。
+Linux 没有窗口，可以用这几条命令操作：
+
+```bash
+hdc shell power-shell timeout -o 2147483647                   # 不让屏幕自动熄灭
+hdc shell uitest uiInput swipe 628 2300 628 500 1500           # 上滑解锁
+hdc shell uitest screenCap -p /data/local/tmp/s.png && hdc file recv /data/local/tmp/s.png .   # 截图看看
+hdc shell uitest uiInput click <x> <y>                        # 点一下
+```
+
+## 3. 检查一下，然后开跑
+
+```bash
+hdc list targets                                  # 看模拟器编号，比如 127.0.0.1:5555
+export EFFLORA_DEVICE_SN=127.0.0.1:5555           # 用哪台模拟器（必填）
+export EFFLORA_HDC_SERVER=<宿主机 IP>:8710         # 只有 Linux 需要
+scripts/check_emulator.sh                         # 检查能不能连上、模拟器对不对，全过了再跑
+harbor run -y -p tasks -a <agent> -m <provider/model>
+```
+
+- 模拟器重启后编号可能会变，重新看一下 `hdc list targets`。
+- 有多台模拟器想同时跑：每台开一个 `harbor run`，各自设置 `EFFLORA_DEVICE_SN`。
+- 模拟器连不上、配置不对时，这次运行会记为异常，不会记 0 分。
+
+## 常见问题
+
+| 遇到的情况 | 怎么办 |
+| --- | --- |
+| 提示缺少 `EFFLORA_DEVICE_SN` | 设置模拟器编号 |
+| 检查时说找不到这台设备 | 模拟器没开，或者编号变了，重新 `hdc list targets` |
+| Linux 上检查时连不上 hdc | 确认 hdc 是用 `0.0.0.0:8710` 启动的，`EFFLORA_HDC_SERVER` 填的是宿主机 IP |
+| 检查时说语言或时区不对 | 按第 2 步改 |
+| 测试全部失败，画面上有输入法弹窗 | 第 2 步的输入法协议没同意 |
+| 构建时去网上拉 `efflora/harmonyos-base` 失败 | 运行时加上 `BUILDX_BUILDER=default` |

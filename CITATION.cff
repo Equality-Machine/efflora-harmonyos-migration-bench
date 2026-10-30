@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: >-
+  If you use this benchmark, please cite it using the following metadata.
+title: 'Efflora HarmonyOS Migration Bench: Benchmarking Coding Agents on Migrating Mobile Apps to HarmonyOS'
+authors:
+  - name: Efflora
+type: software
+repository-code: 'https://github.com/Equality-Machine/efflora-harmonyos-migration-bench'
+abstract: >-
+  An open-source benchmark for evaluating AI coding agents on migrating
+  real-world iOS and Android apps to HarmonyOS. Tasks are built from real
+  open-source mobile apps pinned to specific commits and are verified by
+  building the migrated HarmonyOS app and running hidden emulator UI tests
+  derived from the source app's behavior. All tasks use the Harbor task
+  format.
+keywords:
+  - harmonyos
+  - arkts
+  - arkui
+  - migration
+  - ios
+  - android
+  - benchmark
+  - coding-agent
+  - llm-evaluation
+license: Apache-2.0

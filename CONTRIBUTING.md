@@ -17,6 +17,7 @@
 
    ```bash
    python3 scripts/validate_tasks.py tasks/<task-id>
+   python3 scripts/build_index.py            # 更新 tasks/index.jsonl 和 README 任务分布图，随任务一起提交
    harbor run -p tasks/<task-id> -a oracle   # 参考解必须得 1 分
    harbor run -p tasks/<task-id> -a nop      # 不做修改必须得 0 分
    ```
