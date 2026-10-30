@@ -1,0 +1,377 @@
+{
+  "bundle": "com.a2h.migration",
+  "reward_policy": "fraction",
+  "fixtures": [
+    "aegis-export-plain-a2h.json"
+  ],
+  "fresh_phase_suffix": "_fresh",
+  "fpoints": [
+    {
+      "id": "F1",
+      "suite": "U01_list_search_filter_sort",
+      "title": "Main entry list: rows, HOTP refresh, search, group chips, sorting",
+      "tests": [
+        "FC001",
+        "FC003",
+        "FC007",
+        "FC008",
+        "FC009",
+        "FC011",
+        "FC012",
+        "FC013",
+        "FC014",
+        "FC015"
+      ],
+      "phases": [
+        "U01#seed",
+        "U01#fc001",
+        "U01#fc003",
+        "U01#fc003_restart",
+        "U01#fc009",
+        "U01#fc007",
+        "U01#fc008",
+        "U01#fc008_restart",
+        "U01#fc012",
+        "U01#fc012_restart",
+        "U01#fc013",
+        "U01#fc013_restart",
+        "U01#fc014",
+        "U01#fc014_restart",
+        "U01#fc015",
+        "U01#fc011",
+        "U01#fc011_restart"
+      ]
+    },
+    {
+      "id": "F2",
+      "suite": "U02_selection_actions",
+      "title": "Selection action mode: select, copy, edit, favourite, drag, groups, delete",
+      "tests": [
+        "FC005",
+        "FC021",
+        "FC022",
+        "FC023",
+        "FC025",
+        "FC026",
+        "FC028",
+        "FC063"
+      ],
+      "phases": [
+        "U02#seed",
+        "U02#fc005",
+        "U02#fc026",
+        "U02#fc021",
+        "U02#fc022",
+        "U02#fc023",
+        "U02#fc023_restart",
+        "U02#fc028",
+        "U02#fc063",
+        "U02#fc025",
+        "U02#fc025_restart"
+      ]
+    },
+    {
+      "id": "F3",
+      "suite": "U03_transfer_and_copy",
+      "title": "Transfer (QR) screen, clipboard, manual entry prefill, copy behaviours",
+      "tests": [
+        "FC002",
+        "FC020",
+        "FC024",
+        "FC057",
+        "FC058",
+        "FC059",
+        "FC128"
+      ],
+      "phases": [
+        "U03#seed",
+        "U03#fc057",
+        "U03#fc024",
+        "U03#fc058",
+        "U03#fc059",
+        "U03#fc020",
+        "U03#fc002",
+        "U03#fc128",
+        "U03#fc128_restart"
+      ]
+    },
+    {
+      "id": "F4",
+      "suite": "U04_editor_new_entry",
+      "title": "Add new entry form: advanced section, OTP types, PIN, secret, save, duplicates, discard",
+      "tests": [
+        "FC040",
+        "FC044",
+        "FC045",
+        "FC048",
+        "FC051",
+        "FC055",
+        "FC056"
+      ],
+      "phases": [
+        "U04#seed",
+        "U04#fc044",
+        "U04#fc045",
+        "U04#fc045_list",
+        "U04#fc048",
+        "U04#fc040",
+        "U04#fc051",
+        "U04#fc051_restart",
+        "U04#fc055",
+        "U04#fc056"
+      ]
+    },
+    {
+      "id": "F5",
+      "suite": "U05_editor_existing_entry",
+      "title": "Edit entry screen for seed entries: fields, groups, advanced values, icons, usage, delete",
+      "tests": [
+        "FC039",
+        "FC041",
+        "FC042",
+        "FC043",
+        "FC046",
+        "FC047",
+        "FC052",
+        "FC053",
+        "FC054"
+      ],
+      "phases": [
+        "U05#seed",
+        "U05#fc039",
+        "U05#fc039_restart",
+        "U05#fc041",
+        "U05#fc042",
+        "U05#fc043",
+        "U05#fc043_restart",
+        "U05#fc046",
+        "U05#fc047",
+        "U05#fc052",
+        "U05#fc052_restart",
+        "U05#fc053",
+        "U05#fc054",
+        "U05#fc054_restart"
+      ]
+    },
+    {
+      "id": "F6",
+      "suite": "U06_group_manager",
+      "title": "Manage groups: list, rename, reorder, remove, delete unused, save/discard",
+      "tests": [
+        "FC064",
+        "FC065",
+        "FC067",
+        "FC124"
+      ],
+      "phases": [
+        "U06#seed",
+        "U06#fc124",
+        "U06#fc064",
+        "U06#fc065",
+        "U06#fc067"
+      ]
+    },
+    {
+      "id": "F7",
+      "suite": "U07_appearance",
+      "title": "Appearance settings and their effect on the entry list",
+      "tests": [
+        "FC114",
+        "FC115",
+        "FC116",
+        "FC117",
+        "FC118",
+        "FC119",
+        "FC120",
+        "FC121",
+        "FC122",
+        "FC123"
+      ],
+      "phases": [
+        "U07#seed",
+        "U07#fc114",
+        "U07#fc114_restart",
+        "U07#fc115",
+        "U07#fc115_restart",
+        "U07#fc116",
+        "U07#fc117",
+        "U07#fc118",
+        "U07#fc119",
+        "U07#fc120",
+        "U07#fc121",
+        "U07#fc121_restore",
+        "U07#fc122",
+        "U07#fc123"
+      ]
+    },
+    {
+      "id": "F8",
+      "suite": "U08_behavior_and_tap_settings",
+      "title": "Behavior/security display settings: search, chips, highlight, freeze, reveal, screen security",
+      "tests": [
+        "FC126",
+        "FC127",
+        "FC131",
+        "FC132",
+        "FC133",
+        "FC140",
+        "FC141",
+        "FC142",
+        "FC145"
+      ],
+      "phases": [
+        "U08#seed",
+        "U08#fc126",
+        "U08#fc126_restart",
+        "U08#fc127",
+        "U08#fc131",
+        "U08#fc132",
+        "U08#fc133",
+        "U08#fc141",
+        "U08#fc142",
+        "U08#fc140",
+        "U08#fc145",
+        "U08#fc145_restart"
+      ]
+    },
+    {
+      "id": "F9",
+      "suite": "U09_about_and_misc",
+      "title": "Settings/About screens, usage-count reset, countdown bars",
+      "tests": [
+        "FC004",
+        "FC016",
+        "FC017",
+        "FC072",
+        "FC073",
+        "FC075",
+        "FC125"
+      ],
+      "phases": [
+        "U09#seed",
+        "U09#fc016",
+        "U09#fc017",
+        "U09#fc072",
+        "U09#fc073",
+        "U09#fc075",
+        "U09#fc125",
+        "U09#fc004"
+      ]
+    },
+    {
+      "id": "F10",
+      "suite": "U10_security_lock",
+      "title": "Encryption, lock/unlock, audit log, passwords, PIN keyboard, auto lock",
+      "tests": [
+        "FC010",
+        "FC069",
+        "FC134",
+        "FC135",
+        "FC138",
+        "FC139",
+        "FC144",
+        "FC155"
+      ],
+      "phases": [
+        "U10#seed",
+        "U10#fc134",
+        "U10#fc010",
+        "U10#fc069",
+        "U10#fc155",
+        "U10#fc135",
+        "U10#fc144",
+        "U10#fc138",
+        "U10#fc139"
+      ]
+    },
+    {
+      "id": "F11",
+      "suite": "U11_backups",
+      "title": "Backup reminder card and setting, automatic backups on an encrypted vault",
+      "tests": [
+        "FC030",
+        "FC147",
+        "FC148",
+        "FC150"
+      ],
+      "phases": [
+        "U11#seed",
+        "U11#fc030",
+        "U11#fc147",
+        "U11#fc148",
+        "U11#fc150"
+      ]
+    },
+    {
+      "id": "F12",
+      "suite": "U12_export",
+      "title": "Export dialog, formats, group filter, share, Google Authenticator export, plaintext warning card",
+      "tests": [
+        "FC031",
+        "FC083",
+        "FC084",
+        "FC085",
+        "FC086",
+        "FC087",
+        "FC088"
+      ],
+      "phases": [
+        "U12#seed",
+        "U12#fc084",
+        "U12#fc083",
+        "U12#fc085",
+        "U12#fc031",
+        "U12#fc031_restart",
+        "U12#fc086",
+        "U12#fc087",
+        "U12#fc088"
+      ]
+    },
+    {
+      "id": "F13",
+      "suite": "U13_import",
+      "title": "Import entries screen and the importers that can be fed with files the app itself produces",
+      "tests": [
+        "FC081",
+        "FC089",
+        "FC091",
+        "FC092",
+        "FC093",
+        "FC094",
+        "FC096",
+        "FC103",
+        "FC108",
+        "FC113"
+      ],
+      "phases": [
+        "U13#seed",
+        "U13#fc081",
+        "U13#fc091",
+        "U13#fc092",
+        "U13#fc094",
+        "U13#fc093",
+        "U13#fc089",
+        "U13#fc096",
+        "U13#fc108",
+        "U13#fc103",
+        "U13#fc113"
+      ]
+    },
+    {
+      "id": "F14",
+      "suite": "U14_intro",
+      "title": "First-run intro (each test starts with `reset`, i.e. a fresh install without data)",
+      "tests": [
+        "FC076",
+        "FC078",
+        "FC080"
+      ],
+      "phases": [
+        "U14#fc080_fresh",
+        "U14#fc080_restart",
+        "U14#fc078_fresh",
+        "U14#fc076_fresh"
+      ]
+    }
+  ]
+}

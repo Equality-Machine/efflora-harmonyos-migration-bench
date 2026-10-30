@@ -1,0 +1,170 @@
+{
+    "version": 1,
+    "header": {
+        "slots": null,
+        "params": null
+    },
+    "db": {
+        "version": 3,
+        "entries": [
+            {
+                "type": "totp",
+                "uuid": "a0000001-0000-4000-8000-000000000001",
+                "name": "alice.miller@example.com",
+                "issuer": "Google",
+                "note": "",
+                "favorite": true,
+                "icon": null,
+                "info": {
+                    "secret": "267H27JMYQDC4XJLD5OVTQGXAK2HXVFA",
+                    "algo": "SHA1",
+                    "digits": 6,
+                    "period": 30
+                },
+                "groups": [
+                    "2d7a5f3b-1c2e-4d4f-8b62-7a3e9f8c1b02"
+                ]
+            },
+            {
+                "type": "totp",
+                "uuid": "a0000001-0000-4000-8000-000000000002",
+                "name": "alice.miller@contoso.example",
+                "issuer": "Contoso VPN",
+                "note": "Remote office VPN (fake test account)",
+                "favorite": false,
+                "icon": null,
+                "info": {
+                    "secret": "ORI7CJVWIDLWF5V33SEOZVIZC5ZIPIWE",
+                    "algo": "SHA256",
+                    "digits": 8,
+                    "period": 60
+                },
+                "groups": [
+                    "1c6f4e2a-0b1d-4c3e-9a51-6f2d8e7b0a01"
+                ]
+            },
+            {
+                "type": "totp",
+                "uuid": "a0000001-0000-4000-8000-000000000003",
+                "name": "alice-dev",
+                "issuer": "GitHub",
+                "note": "",
+                "favorite": false,
+                "icon": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzIiIGZpbGw9IiMyNDI5MmYiLz48dGV4dCB4PSIzMiIgeT0iNDMiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjMwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+R0g8L3RleHQ+PC9zdmc+",
+                "info": {
+                    "secret": "XYA7W245TFSR2WVWIEWZZGW7EWZJW3M5",
+                    "algo": "SHA512",
+                    "digits": 6,
+                    "period": 30
+                },
+                "groups": [
+                    "1c6f4e2a-0b1d-4c3e-9a51-6f2d8e7b0a01"
+                ],
+                "icon_mime": "image/svg+xml",
+                "icon_hash": "f170dc8e36373de10762f7e6e6d55aff3340db1b109f741e61d623e167ead570"
+            },
+            {
+                "type": "hotp",
+                "uuid": "a0000001-0000-4000-8000-000000000004",
+                "name": "alice.m",
+                "issuer": "Example Bank",
+                "note": "Card reader fallback, counter-based",
+                "favorite": false,
+                "icon": null,
+                "info": {
+                    "secret": "3HH2PJH6VHBKOEF5MBYGOY2H3AM267UO",
+                    "algo": "SHA1",
+                    "digits": 6,
+                    "counter": 5
+                },
+                "groups": [
+                    "2d7a5f3b-1c2e-4d4f-8b62-7a3e9f8c1b02"
+                ]
+            },
+            {
+                "type": "steam",
+                "uuid": "a0000001-0000-4000-8000-000000000005",
+                "name": "alice_gamer",
+                "issuer": "Steam",
+                "note": "",
+                "favorite": false,
+                "icon": null,
+                "info": {
+                    "secret": "ZS45RHGFJVGPJGSFNDRXCRA5OIDSMTMB",
+                    "algo": "SHA1",
+                    "digits": 5,
+                    "period": 30
+                },
+                "groups": [
+                    "3e8b6a4c-2d3f-4e5a-9c73-8b4fa09d2c03"
+                ]
+            },
+            {
+                "type": "totp",
+                "uuid": "a0000001-0000-4000-8000-000000000006",
+                "name": "@alice@social.example",
+                "issuer": "Mastodon",
+                "note": "",
+                "favorite": false,
+                "icon": null,
+                "info": {
+                    "secret": "Z3COO436ADGP46TFQAIHH6BPDA4L3I4X",
+                    "algo": "SHA1",
+                    "digits": 7,
+                    "period": 30
+                },
+                "groups": []
+            },
+            {
+                "type": "totp",
+                "uuid": "a0000001-0000-4000-8000-000000000007",
+                "name": "alice@cloud.example.org",
+                "issuer": "Nextcloud",
+                "note": "",
+                "favorite": true,
+                "icon": null,
+                "info": {
+                    "secret": "HRUEC653PN3XCQUOFK467B42YNW3HW4L",
+                    "algo": "SHA1",
+                    "digits": 6,
+                    "period": 30
+                },
+                "groups": [
+                    "2d7a5f3b-1c2e-4d4f-8b62-7a3e9f8c1b02",
+                    "1c6f4e2a-0b1d-4c3e-9a51-6f2d8e7b0a01"
+                ]
+            },
+            {
+                "type": "totp",
+                "uuid": "a0000001-0000-4000-8000-000000000008",
+                "name": "root@homelab",
+                "issuer": "",
+                "note": "",
+                "favorite": false,
+                "icon": null,
+                "info": {
+                    "secret": "ZSENO5DBFQD5NB3XEXMWSPCAOLKP6U7Y",
+                    "algo": "SHA1",
+                    "digits": 6,
+                    "period": 20
+                },
+                "groups": []
+            }
+        ],
+        "groups": [
+            {
+                "uuid": "1c6f4e2a-0b1d-4c3e-9a51-6f2d8e7b0a01",
+                "name": "Work"
+            },
+            {
+                "uuid": "2d7a5f3b-1c2e-4d4f-8b62-7a3e9f8c1b02",
+                "name": "Personal"
+            },
+            {
+                "uuid": "3e8b6a4c-2d3f-4e5a-9c73-8b4fa09d2c03",
+                "name": "Gaming"
+            }
+        ],
+        "icons_optimized": true
+    }
+}

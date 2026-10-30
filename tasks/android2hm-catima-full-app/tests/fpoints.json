@@ -1,0 +1,267 @@
+{
+  "bundle": "com.a2h.migration",
+  "reward_policy": "fraction",
+  "fpoints": [
+    {
+      "id": "F1",
+      "suite": "U01_card_list",
+      "title": "Main card list: rows, open, search, group tabs, sort, display options, overflow menu",
+      "tests": [
+        "FC001",
+        "FC002",
+        "FC005",
+        "FC004",
+        "FC006",
+        "FC007",
+        "FC008",
+        "FC009",
+        "FC010",
+        "FC011"
+      ],
+      "phases": [
+        "U01CardList#fc001_show_list",
+        "U01CardList#fc002_open_card",
+        "U01CardList#fc005_search",
+        "U01CardList#fc004_group_tab",
+        "U01CardList#fc004_group_tab_restart",
+        "U01CardList#fc006_sort",
+        "U01CardList#fc006_sort_restart",
+        "U01CardList#fc007_display_options",
+        "U01CardList#fc007_display_options_restart",
+        "U01CardList#fc008_groups",
+        "U01CardList#fc009_import_export",
+        "U01CardList#fc010_settings",
+        "U01CardList#fc011_about"
+      ]
+    },
+    {
+      "id": "F2",
+      "suite": "U02_multi_select",
+      "title": "Card list multi-select actions: select, edit, share, star, archive, duplicate, delete",
+      "tests": [
+        "FC012",
+        "FC014",
+        "FC013",
+        "FC018",
+        "FC017",
+        "FC015",
+        "FC016"
+      ],
+      "phases": [
+        "U02MultiSelect#fc012_select",
+        "U02MultiSelect#fc014_edit",
+        "U02MultiSelect#fc013_share",
+        "U02MultiSelect#fc018_star",
+        "U02MultiSelect#fc017_archive",
+        "U02MultiSelect#fc015_duplicate",
+        "U02MultiSelect#fc016_delete"
+      ]
+    },
+    {
+      "id": "F3",
+      "suite": "U03_card_view",
+      "title": "Card view: details, card ID copy, info, previous/next, share, edit, thumbnail long press, balance",
+      "tests": [
+        "FC021",
+        "FC028",
+        "FC029",
+        "FC030",
+        "FC031",
+        "FC033",
+        "FC022",
+        "FC027",
+        "FC032"
+      ],
+      "phases": [
+        "U03CardView#fc021_details",
+        "U03CardView#fc028_copy_card_id",
+        "U03CardView#fc029_info",
+        "U03CardView#fc030_previous",
+        "U03CardView#fc031_next",
+        "U03CardView#fc033_share",
+        "U03CardView#fc022_edit",
+        "U03CardView#fc027_long_press_icon",
+        "U03CardView#fc032_update_balance",
+        "U03CardView#fc032_update_balance_restart"
+      ]
+    },
+    {
+      "id": "F4",
+      "suite": "U04_card_view_actions",
+      "title": "Card view: volume-key navigation, star, archive, duplicate, delete",
+      "tests": [
+        "FC088",
+        "FC038",
+        "FC034",
+        "FC035",
+        "FC036",
+        "FC037"
+      ],
+      "phases": [
+        "U04CardViewActions#fc088_volume_setting",
+        "U04CardViewActions#fc038_volume_navigation",
+        "U04CardViewActions#fc034_star",
+        "U04CardViewActions#fc035_archive",
+        "U04CardViewActions#fc036_duplicate",
+        "U04CardViewActions#fc037_delete"
+      ]
+    },
+    {
+      "id": "F5",
+      "suite": "U05_add_card",
+      "title": "Add card: scan screen, no-barcode entry, manual barcode selector",
+      "tests": [
+        "FC003",
+        "FC064",
+        "FC065",
+        "FC060",
+        "FC061"
+      ],
+      "phases": [
+        "U05AddCard#fc003_add_card",
+        "U05AddCard#fc064_add_without_barcode",
+        "U05AddCard#fc065_add_manually",
+        "U05AddCard#fc060_enter_card_id",
+        "U05AddCard#fc061_pick_barcode_type"
+      ]
+    },
+    {
+      "id": "F6",
+      "suite": "U06_editor_card_tab",
+      "title": "Card editor Card tab: tabs, name, barcode value/type/encoding, save, edit barcode, discard prompt",
+      "tests": [
+        "FC041",
+        "FC042",
+        "FC051",
+        "FC052",
+        "FC057",
+        "FC044",
+        "FC058"
+      ],
+      "phases": [
+        "U06EditorCardTab#fc041_tabs",
+        "U06EditorCardTab#fc042_store_name",
+        "U06EditorCardTab#fc051_barcode_value",
+        "U06EditorCardTab#fc052_type_encoding",
+        "U06EditorCardTab#fc057_save",
+        "U06EditorCardTab#fc044_edit_barcode",
+        "U06EditorCardTab#fc058_discard_prompt"
+      ]
+    },
+    {
+      "id": "F7",
+      "suite": "U07_editor_options_tab",
+      "title": "Card editor Options tab: note, groups, dates, currency, balance",
+      "tests": [
+        "FC043",
+        "FC046",
+        "FC047",
+        "FC048",
+        "FC049",
+        "FC050"
+      ],
+      "phases": [
+        "U07EditorOptionsTab#fc043_note",
+        "U07EditorOptionsTab#fc046_groups",
+        "U07EditorOptionsTab#fc047_valid_from",
+        "U07EditorOptionsTab#fc048_expiry",
+        "U07EditorOptionsTab#fc049_currency",
+        "U07EditorOptionsTab#fc050_balance"
+      ]
+    },
+    {
+      "id": "F8",
+      "suite": "U08_card_images",
+      "title": "Card images: front image dialog, gallery picker, cropper, image switching and viewer",
+      "tests": [
+        "FC053",
+        "FC055",
+        "FC056",
+        "FC025",
+        "FC026"
+      ],
+      "phases": [
+        "U08CardImages#fc053_front_image_dialog",
+        "U08CardImages#fc055_pick_from_gallery",
+        "U08CardImages#fc056_crop",
+        "U08CardImages#fc025_switch_images",
+        "U08CardImages#fc026_open_image"
+      ]
+    },
+    {
+      "id": "F9",
+      "suite": "U09_groups",
+      "title": "Manage groups: create, reorder, edit, membership, rename, save, delete",
+      "tests": [
+        "FC070",
+        "FC071",
+        "FC072",
+        "FC075",
+        "FC074",
+        "FC076",
+        "FC073"
+      ],
+      "phases": [
+        "U09Groups#fc070_create_group",
+        "U09Groups#fc071_reorder",
+        "U09Groups#fc072_edit_group",
+        "U09Groups#fc075_toggle_membership",
+        "U09Groups#fc074_rename",
+        "U09Groups#fc076_save_group",
+        "U09Groups#fc073_delete_group"
+      ]
+    },
+    {
+      "id": "F10",
+      "suite": "U10_import_export",
+      "title": "Import/export: export, password, send, import formats, encrypted import, import from file",
+      "tests": [
+        "FC077",
+        "FC079",
+        "FC078",
+        "FC081",
+        "FC082",
+        "FC080"
+      ],
+      "phases": [
+        "U10ImportExport#fc077_export",
+        "U10ImportExport#fc079_send",
+        "U10ImportExport#fc078_export_password",
+        "U10ImportExport#fc081_import_formats",
+        "U10ImportExport#fc082_encrypted_import",
+        "U10ImportExport#fc080_import_file"
+      ]
+    },
+    {
+      "id": "F11",
+      "suite": "U11_settings",
+      "title": "Settings: theme, pure black, language, column count",
+      "tests": [
+        "FC084",
+        "FC085",
+        "FC086",
+        "FC087"
+      ],
+      "phases": [
+        "U11Settings#fc084_theme",
+        "U11Settings#fc084_theme_restart",
+        "U11Settings#fc085_pure_black",
+        "U11Settings#fc086_language",
+        "U11Settings#fc087_columns"
+      ]
+    },
+    {
+      "id": "F12",
+      "suite": "U12_about",
+      "title": "About screen: version, credits",
+      "tests": [
+        "FC094",
+        "FC095"
+      ],
+      "phases": [
+        "U12About#fc094_version",
+        "U12About#fc095_credits"
+      ]
+    }
+  ]
+}

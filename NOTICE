@@ -1,0 +1,31 @@
+Efflora HarmonyOS Migration Bench
+Copyright 2026 Efflora
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Third-party materials
+---------------------
+Individual benchmark tasks may include, or download at build time, source code
+from third-party open-source projects (including the iOS / Android source
+apps to be migrated). Such code remains subject to its original
+license. The upstream repository, commit and license of each task are recorded in
+the task's task.toml under [metadata] (upstream_repo, upstream_commit,
+upstream_license).
+
+Reference solutions (solution/) that port an upstream app to HarmonyOS are
+derivative works of that app and are distributed under the upstream
+project's license, not under Apache-2.0:
+
+  - tasks/android2hm-catima-full-app/solution/
+      ported from Catima (https://github.com/CatimaLoyalty/Android), GPL-3.0
+  - tasks/android2hm-aegis-full-app/solution/
+      ported from Aegis Authenticator (https://github.com/beemdevelopment/Aegis),
+      GPL-3.0
+
+HarmonyOS SDK, Command Line Tools for HarmonyOS, DevEco Studio and related
+tooling are provided by Huawei under their own terms. They are NOT distributed
+with this repository; users must obtain them separately.
+
+"HarmonyOS", "OpenHarmony", "iOS" and "Android" are trademarks of their
+respective owners. This project is not affiliated with or endorsed by
+Huawei, the OpenAtom Foundation, Apple or Google.
